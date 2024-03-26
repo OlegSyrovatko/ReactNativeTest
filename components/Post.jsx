@@ -1,15 +1,14 @@
 import { styled } from "styled-components/native";
 
 const PostView = styled.View`
-  margin-top: 40px;
+  margin-top: 10px;
   padding: 15px;
   background-color: lightgray;
   flex-direction: row;
-  height: 100px;
   width: 100%;
   border-radius: 3px;
-  border-bottom-width: 5px;
-  border-bottom-color: rgba(0, 0, 0, 0.5);
+  border-bottom-width: 2px;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
   border-bottom-style: solid;
 `;
 
@@ -24,7 +23,12 @@ const PostTitle = styled.Text`
   font-size: 16px;
   font-weight: 700;
 `;
-const PostDetails = styled.View``;
+const PostDescription = styled.Text`
+  font-size: 13px;
+`;
+const PostDetails = styled.View`
+  flex: 1;
+`;
 const PostDate = styled.Text`
   font-size: 12px;
   color: rgba(0, 0, 0, 0.2);
@@ -32,12 +36,13 @@ const PostDate = styled.Text`
   font-weight: 700;
 `;
 
-export const Post = ({ title, imageUrl, createdAt }) => {
+export const Post = ({ title, description, avatar, createdAt }) => {
   return (
     <PostView>
-      <PostImage source={{ uri: imageUrl }}></PostImage>
+      <PostImage source={{ uri: avatar }}></PostImage>
       <PostDetails>
         <PostTitle>{title}</PostTitle>
+        <PostDescription>{description}</PostDescription>
         <PostDate>{createdAt}</PostDate>
       </PostDetails>
     </PostView>
