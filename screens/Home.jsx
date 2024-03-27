@@ -12,7 +12,7 @@ import { Loading } from "../components/Loading";
 import axios from "axios";
 import React from "react";
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }) => {
   const [isLoading, setisLoading] = React.useState(true);
   const [items, setItems] = React.useState();
 
@@ -45,7 +45,15 @@ export const HomeScreen = () => {
         }
         data={items}
         renderItem={({ item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity
+            style={{ paddingLeft: 15, paddingRight: 15 }}
+            onPress={() => {
+              navigation.navigate("FullPost", {
+                id: item.id,
+                title: item.title,
+              });
+            }}
+          >
             <Post
               title={item.title}
               description={item.description}
@@ -64,7 +72,6 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
     // flex: 1,
     backgroundColor: "lightyellow",
     // alignItems: "center",
