@@ -4,11 +4,11 @@ import {
   Text,
   View,
   FlatList,
-  ActivityIndicator,
   RefreshControl,
   TouchableOpacity,
 } from "react-native";
 import { Post } from "../components/Post";
+import { Loading } from "../components/Loading";
 import axios from "axios";
 import React from "react";
 
@@ -35,25 +35,7 @@ export const HomeScreen = () => {
   React.useEffect(fetchPosts, []);
 
   if (isLoading) {
-    return (
-      <View
-        style={{
-          marginTop: 300,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ActivityIndicator size="large" />
-        <Text
-          style={{
-            marginTop: 15,
-          }}
-        >
-          Loading...
-        </Text>
-      </View>
-    );
+    return <Loading />;
   }
   return (
     <View style={styles.container}>
